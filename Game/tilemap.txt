@@ -1,2 +1,0 @@
-Click tilemap under Scene panel on left side
-Use higher tilemap number to layer tiles
