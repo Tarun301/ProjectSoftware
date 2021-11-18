@@ -5,6 +5,8 @@ const MAX_SPEED = 80
 const FRICTION = 500
 
 var velocity = Vector2.ZERO
+var shooting = false
+var direction = Vector2.RIGHT
 
 onready var animationPlayer = $AnimationPlayer
 onready var Arcane = preload ("res://Effects/Arcane.tscn")
@@ -17,24 +19,38 @@ func _physics_process(delta):
 	
 	if input_vector != Vector2.ZERO:
 		if input_vector.x > 0:
-			animationPlayer.play("RunRight")
+			if shooting == false:
+				direction = Vector2.RIGHT
+				animationPlayer.play("RunRight")
 		else:
-			animationPlayer.play("RunLeft")
+			if shooting == false:
+				direction = Vector2.LEFT
+				animationPlayer.play("RunLeft")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
-		animationPlayer.play("IdleRight")
+		if shooting == false:
+			animationPlayer.play("IdleRight")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 		
 	velocity = move_and_slide(velocity)
 
 func _input(event):
-    if event.is_action_pressed("shoot"):
-        shoot()
+	if event.is_action_pressed("shoot"):
+		if shooting == false:
+			if direction == Vector2.RIGHT:
+				animationPlayer.play("shoot1")
+				shoot()	
+				shooting = true
+			else:
+				animationPlayer.play("shootLeft")
+				shoot()	
+				shooting = true
 
 func shoot():
 	var a = Arcane.instance()
 	add_child(a)
 	a.global_position = self.global_position
-	a.direction = Vector2.RIGHT.rotated(rotation)
-	
-	
+	a.direction = direction
+
+func notShooting():
+	shooting = false
