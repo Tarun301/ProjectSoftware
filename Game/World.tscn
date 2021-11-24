@@ -3,7 +3,7 @@
 [ext_resource path="res://Effects/Bush.png" type="Texture" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/Overworld.png" type="Texture" id=3]
-[ext_resource path="res://Camera2D.gd" type="Script" id=4]
+[ext_resource path="res://Camera2D.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Map1.tscn" type="PackedScene" id=6]
 
@@ -95,10 +95,7 @@ cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 format = 1
 tile_data = PoolIntArray( -262162, 1, 393232, -262161, 1, 393232, -262160, 1, 393232, -262159, 1, 393232, -196626, 1, 393234, -196625, 1, 393234, -196624, 1, 393234, -196623, 1, 393234, -131090, 1, 393234, -131089, 1, 393234, -131088, 1, 393234, -131087, 1, 393234, -65554, 1, 393234, -65553, 1, 393234, -65552, 1, 393234, -65551, 1, 393234, -18, 1, 393233, -17, 1, 393233, -16, 1, 393233, -15, 1, 393233, 65518, 1, 524304, 65519, 1, 524304, 65520, 1, 524306, 65521, 1, 458761, 131052, 1, 524299, 131053, 1, 524300, 131054, 1, 655371, 131055, 1, 655370, 131056, 1, 655369, 131057, 1, 655370, 131058, 1, 524298, 196588, 1, 524297, 196589, 1, 524298, 196590, 1, 655372, 196591, 1, 655371, 196592, 1, 655372, 196593, 1, 655369, 262127, 1, 655372 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-zoom = Vector2( 0.5, 0.5 )
-script = ExtResource( 4 )
+[node name="Camera2D" parent="." instance=ExtResource( 4 )]
 
 [node name="Collision" type="Node" parent="."]
 
@@ -185,4 +182,6 @@ position = Vector2( -59.7036, 49.1924 )
 "enemy",
 ] instance=ExtResource( 5 )]
 position = Vector2( -42.0449, 111.419 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 [connection signal="input_event" from="Collision/StaticBody2D" to="Player" method="_on_StaticBody2D_input_event"]

@@ -38,11 +38,15 @@ func _input(event):
 	if event.is_action_pressed("shoot"):
 		if shooting == false:
 			if direction == Vector2.RIGHT:
-				animationPlayer.play("shoot1")
+				animationPlayer.play("shoot1")	
+				if !$ArcaneSFX.is_playing():
+					$ArcaneSFX.play()
 				shoot()	
 				shooting = true
 			else:
 				animationPlayer.play("shootLeft")
+				if !$ArcaneSFX.is_playing():
+					$ArcaneSFX.play()
 				shoot()	
 				shooting = true
 
@@ -54,3 +58,6 @@ func shoot():
 
 func notShooting():
 	shooting = false
+	
+func _on_Arcane_enemyDead():
+	$EnemyDeadSFX.play()

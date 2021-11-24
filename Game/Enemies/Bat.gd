@@ -75,6 +75,8 @@ func update_wander():
 func destroy():
 	queue_free()
 
+
+
 func pick_random_state(state_list):
 	state_list.shuffle()
 	return state_list.pop_front()

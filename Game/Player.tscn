@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Player/maori.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Music and Sounds/Pew__006.wav" type="AudioStream" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.0
@@ -140,6 +141,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=10]
 resource_name = "shoot1"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -147,7 +149,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"times": PoolRealArray( 0, 0.066331, 0.152818, 0.247002 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 18, 19, 21, 22 ]
@@ -159,7 +161,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.9 ),
+"times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -207,7 +209,7 @@ z_index = 1
 texture = ExtResource( 1 )
 vframes = 21
 hframes = 6
-frame = 10
+frame = 18
 region_rect = Rect2( 8.79285, 567.468, 365.415, 68.4948 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -227,3 +229,8 @@ anims/RunRight = SubResource( 8 )
 anims/RunUp = SubResource( 9 )
 anims/shoot1 = SubResource( 10 )
 anims/shootLeft = SubResource( 11 )
+
+[node name="ArcaneSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="EnemyDeadSFX" type="AudioStreamPlayer2D" parent="."]
