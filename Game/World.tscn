@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Effects/Bush.png" type="Texture" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Door.tscn" type="PackedScene" id=9]
 [ext_resource path="res://End.gd" type="Script" id=10]
 [ext_resource path="res://Music and Sounds/overworld sketch.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Score.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 112, 112, -16, 112, -16, -48, 112, -48 )
@@ -387,6 +388,8 @@ shape = SubResource( 4 )
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource( 7 )]
 
+[node name="Score" parent="CanvasLayer" instance=ExtResource( 12 )]
+
 [node name="Key" parent="." instance=ExtResource( 8 )]
 position = Vector2( -150.474, 149.071 )
 
@@ -450,6 +453,6 @@ autoplay = true
 [connection signal="key1" from="Player" to="Door" method="_on_Player_key1"]
 [connection signal="input_event" from="Collision/StaticBody2D" to="Player" method="_on_StaticBody2D_input_event"]
 [connection signal="body_entered" from="Collision/End/Area2D" to="Collision/End" method="_on_Area2D_body_entered"]
-[connection signal="collected" from="Key" to="Player" method="_on_Key_collected"]
 [connection signal="collected" from="Key" to="Door2" method="_on_Key_collected"]
+[connection signal="collected" from="Key" to="Player" method="_on_Key_collected"]
 [connection signal="collected" from="Key2" to="Player" method="_on_Key2_collected"]

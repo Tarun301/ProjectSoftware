@@ -5,7 +5,7 @@ const MAX_SPEED = 80
 const FRICTION = 500
 
 export(int) var max_hp = 100
-
+export(int) var score
 signal health_changed(health)
 
 var velocity = Vector2.ZERO
@@ -54,6 +54,8 @@ func _physics_process(delta):
 		
 	velocity = move_and_slide(velocity)
 
+
+
 func _input(event):
 	if event.is_action_pressed("shoot"):
 		if shooting == false:
@@ -79,8 +81,7 @@ func shoot():
 func notShooting():
 	shooting = false
 	
-func _on_Arcane_enemyDead():
-	$EnemyDeadSFX.play()
+
 
 
 func _on_Area2D_body_entered(body):
@@ -91,8 +92,13 @@ func _on_Area2D_body_entered(body):
 
 func _on_Key2_collected():
 	$Collectable.play()
+	Global.score = Global.score + 100
 	emit_signal("key1")
 
 
 func _on_Key_collected():
+	Global.score = Global.score + 100
 	$Collectable.play()
+
+
+
