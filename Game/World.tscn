@@ -256,7 +256,18 @@ rotation = 1.5708
 scale = Vector2( 0.122024, 0.921459 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Collision/StaticBody2D15"]
-position = Vector2( -252.332, 71.2757 )
+position = Vector2( -248.857, 71.2757 )
+rotation = -3.14159
+scale = Vector2( 0.860075, -0.578944 )
+shape = SubResource( 4 )
+
+[node name="StaticBody2D23" type="StaticBody2D" parent="Collision"]
+position = Vector2( 60.4182, 342.029 )
+rotation = 1.5708
+scale = Vector2( 0.122024, 0.921459 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collision/StaticBody2D23"]
+position = Vector2( -1826.56, 192.13 )
 rotation = -3.14159
 scale = Vector2( 0.860075, -0.578944 )
 shape = SubResource( 4 )
@@ -439,6 +450,6 @@ autoplay = true
 [connection signal="key1" from="Player" to="Door" method="_on_Player_key1"]
 [connection signal="input_event" from="Collision/StaticBody2D" to="Player" method="_on_StaticBody2D_input_event"]
 [connection signal="body_entered" from="Collision/End/Area2D" to="Collision/End" method="_on_Area2D_body_entered"]
-[connection signal="collected" from="Key" to="Player" method="_on_Key_collected"]
 [connection signal="collected" from="Key" to="Door2" method="_on_Key_collected"]
+[connection signal="collected" from="Key" to="Player" method="_on_Key_collected"]
 [connection signal="collected" from="Key2" to="Player" method="_on_Key2_collected"]
