@@ -5,7 +5,6 @@ const MAX_SPEED = 80
 const FRICTION = 500
 
 export(int) var max_hp = 100
-export(int) var score
 signal health_changed(health)
 
 var velocity = Vector2.ZERO

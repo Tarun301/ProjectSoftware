@@ -4,6 +4,8 @@
 [ext_resource path="res://ARCADECLASSIC.TTF" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
+size = 18
+extra_spacing_top = 3
 font_data = ExtResource( 2 )
 
 [node name="Score" type="Control"]
