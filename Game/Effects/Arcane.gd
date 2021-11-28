@@ -1,7 +1,7 @@
 extends Area2D
 
 var direction = Vector2.RIGHT
-var speed = 140 # pixels / s
+var speed = 200 # pixels / s
 
 signal enemyDead()
 func _ready():
