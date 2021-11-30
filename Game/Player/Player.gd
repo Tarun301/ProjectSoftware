@@ -10,6 +10,7 @@ signal health_changed(health)
 var velocity = Vector2.ZERO
 var shooting = false
 var direction = Vector2.RIGHT
+var start = true
 signal key1
 
 onready var animationPlayer = $AnimationPlayer
@@ -23,6 +24,7 @@ func _set_health(value):
 	if health != prev_health:
 		emit_signal("health_changed", health)
 		if health == 0:
+			Global.score = 0
 			get_tree().reload_current_scene()
 
 func damage(amount):
@@ -80,8 +82,15 @@ func shoot():
 func notShooting():
 	shooting = false
 	
+func _on_HP_body_entered(body):
+	if start == true:
+		health = 100
+		start = false
 
-
+func _on_Pit_body_entered(body):
+	if body == self:
+		Global.score = 0
+		get_tree().reload_current_scene()
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("enemy"):
@@ -98,6 +107,7 @@ func _on_Key2_collected():
 func _on_Key_collected():
 	Global.score = Global.score + 100
 	$Collectable.play()
+
 
 
 

@@ -213,16 +213,16 @@ position = Vector2( 0, 0.749161 )
 scale = Vector2( 0.5, 0.5 )
 z_index = 1
 texture = ExtResource( 1 )
-vframes = 21
 hframes = 6
-frame = 7
+vframes = 21
+frame = 10
 region_rect = Rect2( 8.79285, 567.468, 365.415, 68.4948 )
 
-[node name="Area2D" type="Area2D" parent="Sprite"]
+[node name="PlayerArea" type="Area2D" parent="Sprite"]
 position = Vector2( 0, -1.49832 )
 scale = Vector2( 2.5, 2.2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/PlayerArea"]
 position = Vector2( -0.707092, 0 )
 rotation = -1.5708
 scale = Vector2( 2.48, 0.759998 )
@@ -258,5 +258,5 @@ shape = SubResource( 1 )
 [node name="iFrames" type="Timer" parent="."]
 wait_time = 0.8
 one_shot = true
-[connection signal="area_entered" from="Sprite/Area2D" to="." method="_on_Area2D_area_entered"]
-[connection signal="body_entered" from="Sprite/Area2D" to="." method="_on_Area2D_body_entered"]
+
+[connection signal="body_entered" from="Sprite/PlayerArea" to="." method="_on_Area2D_body_entered"]

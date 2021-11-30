@@ -11,6 +11,7 @@ func _physics_process(delta):
 
 func _on_Arcane_body_entered(body):
 	if body.is_in_group("enemy"):
+		$AudioStreamPlayer2D.play()
 		emit_signal("enemy_dead")
 		Global.score = (Global.score + 25)
 		queue_free()

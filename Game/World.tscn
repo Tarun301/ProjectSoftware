@@ -9,10 +9,11 @@
 [ext_resource path="res://UI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Key.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=9]
-[ext_resource path="res://End.gd" type="Script" id=10]
+[ext_resource path="res://End.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Music and Sounds/overworld sketch.ogg" type="AudioStream" id=11]
 [ext_resource path="res://Score.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Black bar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Collision.tscn" type="PackedScene" id=14]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 112, 112, -16, 112, -16, -48, 112, -48 )
@@ -100,8 +101,6 @@ points = PoolVector2Array( 112, 112, -16, 112, -16, -48, 112, -48 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 83.1454, 106.869 )
 
-[sub_resource type="RectangleShape2D" id=5]
-
 [node name="World" type="YSort"]
 
 [node name="Player" parent="." groups=[
@@ -149,12 +148,7 @@ tile_data = PoolIntArray( -262150, 1610612737, 20, -262149, 1610612737, 21, -262
 
 [node name="Collision" type="Node" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Collision"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D"]
-position = Vector2( -254.434, 16.6175 )
-scale = Vector2( 0.458425, 0.903684 )
-shape = SubResource( 4 )
+[node name="StaticBody2D" parent="Collision" instance=ExtResource( 14 )]
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Collision"]
 
@@ -239,18 +233,7 @@ position = Vector2( 1857.31, 352.118 )
 scale = Vector2( 0.860075, -0.989891 )
 shape = SubResource( 4 )
 
-[node name="End" type="KinematicBody2D" parent="Collision"]
-position = Vector2( -47.7997, 150.566 )
-rotation = 1.5708
-scale = Vector2( 0.147695, 0.960046 )
-script = ExtResource( 10 )
-
-[node name="Area2D" type="Area2D" parent="Collision/End"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/End/Area2D"]
-position = Vector2( 1846.83, 379.412 )
-scale = Vector2( 5.63811, 0.657968 )
-shape = SubResource( 5 )
+[node name="End" parent="Collision" instance=ExtResource( 10 )]
 
 [node name="StaticBody2D15" type="StaticBody2D" parent="Collision"]
 position = Vector2( 60.4182, 342.029 )
@@ -264,12 +247,12 @@ scale = Vector2( 0.860075, -0.578944 )
 shape = SubResource( 4 )
 
 [node name="StaticBody2D23" type="StaticBody2D" parent="Collision"]
-position = Vector2( 60.4182, 342.029 )
+position = Vector2( -68.8407, 333.975 )
 rotation = 1.5708
 scale = Vector2( 0.122024, 0.921459 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Collision/StaticBody2D23"]
-position = Vector2( -1826.56, 192.13 )
+position = Vector2( -1747.26, 53.1135 )
 rotation = -3.14159
 scale = Vector2( 0.860075, -0.578944 )
 shape = SubResource( 4 )
@@ -452,10 +435,9 @@ position = Vector2( 57.6142, 71.0321 )
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
 autoplay = true
+
 [connection signal="health_changed" from="Player" to="CanvasLayer/UI" method="_on_Player_health_changed"]
 [connection signal="key1" from="Player" to="Door" method="_on_Player_key1"]
-[connection signal="input_event" from="Collision/StaticBody2D" to="Player" method="_on_StaticBody2D_input_event"]
-[connection signal="body_entered" from="Collision/End/Area2D" to="Collision/End" method="_on_Area2D_body_entered"]
 [connection signal="collected" from="Key" to="Player" method="_on_Key_collected"]
 [connection signal="collected" from="Key" to="Door2" method="_on_Key_collected"]
 [connection signal="collected" from="Key2" to="Player" method="_on_Key2_collected"]
