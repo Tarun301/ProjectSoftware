@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/my war.ogg-9b8abfc10a42baee1149fae2ab88541f.oggstr"
+
+[deps]
+
+source_file="res://Music and Sounds/my war.ogg"
+dest_files=[ "res://.import/my war.ogg-9b8abfc10a42baee1149fae2ab88541f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -14,3 +14,7 @@ func _on_Key_collected():
 func _on_Key2_collected():
 	queue_free()
 
+
+
+func _on_Key3_collected():
+	queue_free()

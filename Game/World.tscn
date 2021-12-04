@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Effects/Bush.png" type="Texture" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Score.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Black bar.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Collision.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Ready.tscn" type="PackedScene" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 112, 112, -16, 112, -16, -48, 112, -48 )
@@ -233,8 +234,6 @@ position = Vector2( 1857.31, 352.118 )
 scale = Vector2( 0.860075, -0.989891 )
 shape = SubResource( 4 )
 
-[node name="End" parent="Collision" instance=ExtResource( 10 )]
-
 [node name="StaticBody2D15" type="StaticBody2D" parent="Collision"]
 position = Vector2( 60.4182, 342.029 )
 rotation = 1.5708
@@ -252,7 +251,7 @@ rotation = 1.5708
 scale = Vector2( 0.122024, 0.921459 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Collision/StaticBody2D23"]
-position = Vector2( -1747.26, 53.1135 )
+position = Vector2( -1734.17, 48.1653 )
 rotation = -3.14159
 scale = Vector2( 0.860075, -0.578944 )
 shape = SubResource( 4 )
@@ -306,7 +305,7 @@ position = Vector2( -61.8059, 113.941 )
 scale = Vector2( 0.766759, 1.25032 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Collision/StaticBody2D3"]
-position = Vector2( -256.086, 28.8686 )
+position = Vector2( -256.086, 28.4197 )
 scale = Vector2( 1.04699, -0.213935 )
 shape = SubResource( 4 )
 
@@ -376,6 +375,8 @@ shape = SubResource( 4 )
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource( 7 )]
 
+[node name="Ready" parent="CanvasLayer" instance=ExtResource( 15 )]
+
 [node name="Key" parent="." instance=ExtResource( 8 )]
 position = Vector2( -150.474, 149.071 )
 
@@ -435,6 +436,9 @@ position = Vector2( 57.6142, 71.0321 )
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
 autoplay = true
+
+[node name="End" parent="." instance=ExtResource( 10 )]
+position = Vector2( -48.1966, 150.169 )
 
 [connection signal="health_changed" from="Player" to="CanvasLayer/UI" method="_on_Player_health_changed"]
 [connection signal="key1" from="Player" to="Door" method="_on_Player_key1"]
